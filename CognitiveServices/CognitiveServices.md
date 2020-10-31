@@ -1,18 +1,18 @@
 # Cognitive Services
 
-###Content Moderator 
-####Intro
+### Content Moderator 
+#### Intro
 Serwis sluzy do przetwarzania tekstu/obrazu/wideo w celu analizy tresci. Analiza odnosi sie sprawdzenia czy tresci zakwalifikuja sie do potencjalnie zakazanych, wulgarnych, rasistowskich. 
 Klasyfikacja opiera sie na mechanizmach uczenia maszynowego, czarnych list (ang. Blacklist) oraz optycznego wykrywania obiektow. Serwis analizuje rowniez tresci pod katem danych osobowych/wrazliwych. Potrafi nam je wskazac w przeslanym tekscie i okreslic ich typ. 
 
 Mozemy stworzyc swoja liste slow/wyrazen zakazanych lub bazowac na bazie przygotowanej przez MS dla danego jezyka. Serwis obsluguje ponad 100 jezykow. 
-####Use Cases
+#### Use Cases
 - filtracja teksu/zapytania przesylanego do bota przez klienta
 - filtracja tresci publikowanych na forach/ portalach spolecznosciowych 
 - analizowania tresci pod katem obrazliwych
 - analiza pod katem danych wrazliwych 
 
-####How to
+#### How to
 
 _Ograniczenia_
 - Mozemy stworzyc maksymalnie 5 list wyrazen zakazanych, po 10'000 wyrazez w kazdej z nich. 
