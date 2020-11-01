@@ -71,9 +71,87 @@ Mozemy skorzystac z darmowej wersji serwisu, pozwalajacej na przyslanie jednego 
 W cene wlicza sie rowniez ilosc zapytan - cena spada ze wzrostem zamowienia.
 (https://azure.microsoft.com/en-us/pricing/details/cognitive-services/content-moderator/)
 
+### Language Understanding Intelligent Service (LUIS) 
 
+#### Intro
 
+Language Understanding Intelligent Service (LUIS) sluzy do dopasowwywania tresci do stowrzonych przez uzytkowniaka grup tematycznych na podstawie wytycznych podanych przez uzytkownika. Serwis sprawdza sie przy tworzeniu bot'ow do konwersacji opartych na sztucznej inteligencji. Serwis pozawala na uczenie bota, na podstawie wprowadzonych danych oraz sortowania tresci do odpowiednich grup tematycznych. 
+
+#### Use Case
+
+- uzywane przy tworzeniu inteligentnych botow na stronach linii lotniczych, sklepow itp.
+- w polaczeniu z serwisem czytajacym mowe, mozna stworzyc urzadzenie sterowane glosem
+- interfejsy komunikacji czlowiek-komputer 
+#### How To
+
+_Uzycie_
+
+LUIS jest serwisem opartym na uczeniu maszynowym. Uzytkownik nie musi znac tych zagadnien, aby je wykorzystac - serwis robi to w imieniu uzytkownika! 
+Dzialanie serwisu opiera sie na przetwarzaniu 3 glownych obiektow:
+- **Utterances:** tresc wejsciowa, to co przysylamy do serwisu 
+- **Intents:** grupa tematyczna, do ktorej moze zaliczyc sie przeslana tresc
+- **Entities:** slowa lub wyrazenia poszukiwane w Utterance, w celu dopasowania tresci wejsciowej do danej grupy tematycznej
+
+Dzialanie polega na analizie tresci przysylanych do serwisu, na podstawie slow/wyrazen kluczowych podanych wczesniej przez uzytkownika i dopasowaniu ich do odpowiedniej grupy tematycznej (Intents). Mechanizm bedzie dopasowywal tresci na tyle dobrze, na ile damy mu danych do nauki - tzn., ile Entities okreslimy dla kazdej z grup tematycznych.
+
+_Oplaty_
+
+Z LUIS mozna skorzystac wykorzystujac subskrypcje darmowa, pozwalajaca na 5 zapytan tekstowych/sekunde przez pierwsze 10'000 transakcji w miesiacu (po przekroczeniu serwis zwolni do 2 zapytan/sekunde) lub wersje platna 50 zapytan tekstowych/sekunde w cenie 1.27 euro za 1000 zapytan. Mozliwe jest rowniez wysylanie zapytan glosowych przy wykupieniu platnej subskrypcji. 
+
+### Text Analytics
+#### Intro
+
+Serwis sluzy do analizy teksu. Pozwalana na ocene charakteru emocjonalnego przeslanych tresci (pozytywne, negatywne, neutralne). Serwis udostepnia takze funkcje wykrywania jezyka oraz wyszukiwania slow kluczowych. Serwis opiera swoje dzialanie o uczenie maszynowe. 
+
+#### Use case
+ - analiza opinii uzytkownikow sklepow, uslug itp.
+ - przekierowywania ogloszen do odpowiedniego oddzialu w firmie miedzynarodowej 
+ - tagowanie wiadomosci w oparciu o slowa kluczowe 
+ - oznaczenia komentarzy na portalach spolecznosciowych 
  
+#### How to 
+
+_Ograniczenia_
+- Dostepne jezyki:
+ https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/language-support?tabs=sentiment-analysis
+- W jednym dokumencie mozemy przeslac max. 1'000 dokumentow, po 5'000 znakow w kazdym.
+ 
+_Uzycie_
+ 
+Ponizej przedstawiam tylko jedna z funkcjonalnosci udostepnianych przez ten serwis.
+
+**Sentiment Analysics**
+
+Wysylajac tekst do analizy do serwisu, algorytm oparty na uczeniu maszynowym, potrafi okreslic nam stan emocjonalny wypowiedzi w skali od 0 do 1. Czym wynik blizszy 1 tym emocje wypowiedzi okreslane sa na bardziej pozytywne - blizej 0, bardziej negatywne. Wynik okolo 0.5 wskazuje na neutralny charakter wypowiedzi. 
+Aby skorzystac z serwisu, wystarczy wyslac zapytanie http na odpowiedni endpoint, a algorytm okresli stan emocjonalny przeslanej tresci. 
+Przechodzac przez tutorial udalo sie stworzyc Function App , ktora pozwala na umieszczenie przeslanych tresci w 1 z 3 grup, po przepuszczeniu tresci przez Sentiment Analytics.
+
+Schemat aplikacji: 
+
+![schema](resources/images/funApp.png)
+  
+Ponizej przedstawiam zdjecie z panelu Monitor aplikacji pokazujacego historie transakcji.
+
+![schema](resources/images/monitor.png)
+  
+Ponizej pokazano zawartosc kolejki positive-feedback.
+
+![schema](resources/images/positiveQueue.png)
+  
+Co warto zapamietac przy tworzeniu kolejek w Storage Account/Storage Explorer/Queue - wystarczy utworzyc kolejki wyjsciowe. Kolejki do ktorych trafiaja zapytania (direction = out) utworza sie automatycznie po trafieniu tam pierwszej tresci. 
+ 
+_Oplaty_
+
+https://azure.microsoft.com/en-us/pricing/details/cognitive-services/text-analytics/
+Usluga oferuje darmowa subskrypcje do 5'000 transakcji na miesiac. 
+Mozna rowniez wykupic jedna z platnych wersji przedstawiona ponizej. 
+
+![schema](resources/images/AnalyticsTextPricing.png)
+  
+### Podsumowanie
+Opisane serwisy naleza do pakietu Cognitive Services MS Azure. Dzieki zastosowaniu AI potrafia analizowac przeslane im tresci, co mozna wykorzystac do stworzenia bota czy wzbogacenia swojej aplikacji. 
+Serwisy oferuja darmowe oraz platne subskurpcje, ktore mozna dopasowac w zaleznosci od zapotrzebowania. 
+
 
 
 
