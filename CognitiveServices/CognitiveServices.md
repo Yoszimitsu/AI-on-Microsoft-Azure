@@ -96,7 +96,7 @@ Dzialanie polega na analizie tresci przysylanych do serwisu, na podstawie slow/w
 
 _Oplaty_
 
-Z LUIS mozna skorzystac wykorzystujac subskrypcje darmowa, pozwalajaca na 5 zapytan tekstowych/sekunde przez pierwsze 10'000 transakcji w miesiacu (po przekroczeniu serwis zwolni do 2 zapytan/sekunde) lub wersje platna 50 zapytan tekstowych/sekunde w cenie 1.27 euro za 1000 zapytan. Mozliwe jest rowniez wysylanie zapytan glosowych przy wykupieniu platnej subskrypcji. 
+Z LUIS mozna skorzystac wykorzystujac subskrypcje darmowa, pozwalajaca na 5 zapytan tekstowych/sekunde przez pierwsze 10'000 transakcji w miesiacu (po przekroczeniu serwis zwolni do 2 zapytan/sekunde) lub wersje platna 50 zapytan tekstowych/sekunde w cenie 1.27 euro za 1000 zapytan. Mozliwe jest rowniez wysylanie zapytan glosowych przy wykupieniu platnej subskrypcji. (https://azure.microsoft.com/en-us/pricing/details/cognitive-services/language-understanding-intelligent-services/) 
 
 ### Text Analytics
 #### Intro
@@ -142,9 +142,8 @@ Co warto zapamietac przy tworzeniu kolejek w Storage Account/Storage Explorer/Qu
  
 _Oplaty_
 
-https://azure.microsoft.com/en-us/pricing/details/cognitive-services/text-analytics/
 Usluga oferuje darmowa subskrypcje do 5'000 transakcji na miesiac. 
-Mozna rowniez wykupic jedna z platnych wersji przedstawiona ponizej. 
+Mozna rowniez wykupic jedna z platnych wersji przedstawiona ponizej (https://azure.microsoft.com/en-us/pricing/details/cognitive-services/text-analytics/).
 
 ![schema](resources/images/AnalyticsTextPricing.png)
   
