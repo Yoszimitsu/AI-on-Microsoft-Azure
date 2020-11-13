@@ -14,7 +14,6 @@ Moreover, we can interact by a few connection channels like web chat, email, Ms 
 #### Use Cases
 - bot service in website/phone
 - medical facilities services
-- insurance calculator
 - bot to buy services in delivery company
 
 #### How to
@@ -77,10 +76,8 @@ https://azure.microsoft.com/en-us/pricing/details/cognitive-services/qna-maker/
 Bot Framework Composer is open-source, free application which let quickly build sophisticated conversational bot without writing code.
 
 #### Use case
- - analiza opinii uzytkownikow sklepow, uslug itp.
- - przekierowywania ogloszen do odpowiedniego oddzialu w firmie miedzynarodowej 
- - tagowanie wiadomosci w oparciu o slowa kluczowe 
- - oznaczenia komentarzy na portalach spolecznosciowych 
+- bot for internal applications
+- insurance calculator
  
 #### How to
 
@@ -144,6 +141,7 @@ Bot Framework Emulator is a great tool which allow to test our bot in local envi
 Bot Framework Composer support also LUIS service, which make a bot more sophisticated. Of course, LUIS service must be implemented properly to cooperate with a bot.
 
  _Pricing_
+ 
 Bot Framework Composer is open-source, free application.
   
 ### Recap
