@@ -15,10 +15,8 @@ Text-to-speech is sometimes known as voice synthesizing. The text that is used f
 Synthesized speech has improved over time and now sound less like a computer-generated representation. The neural voice capabilities are enhanced through deep neural networks and improve on the standard voices by adding the ability to utilize stress and intonation in the spoken language. 
 Synthesize voice is support in over 45 languages by about 75 voices.
 
-If you needed to perform audio-to-text for more than 10 minutes, it would use Speech Synthesis Markup Language (SSML). This API works in an asynchronous fashion so don't use it for real time synthesis. The service will perform the necessary work on the audio and then save the content to a file that you can download.
-
 Speech translation is the service by which conversational, spoken phrases are translated to other language immediately. Speech transaltion is mix of all speech services and allow to translate input voice to multiple languages in real time- 
-Microsoft's translation engine is powered by two different approaches: statistical machine translation (SMT) and neural machine translation (NMT). SMT uses advanced statistical analysis to estimate the best possible translations given the context of a few words.
+Microsoft's translation engine is powered by two different approaches: **statistical machine translation (SMT) and neural machine translation (NMT)**. SMT uses advanced statistical analysis to estimate the best possible translations given the context of a few words.
 With NMT, neural networks are used to provide more accurate, natural-sounding translations by using the full context of sentences to translate words.
 User can choose languages and voice types. 
 
@@ -50,13 +48,16 @@ The default format is 16 bit, 16khz mono PCM. To customize the format, you can p
 The supported languages page shows the languages supported by both the Speech SDK and REST API so you can have support for your preferred method of accessing the services.
 You can also perform some customization, for a subset of languages, to help improve accuracy. Customization is offered for a subset of the languages through uploading Audio + Human-labeled Transcripts or Related Text: Sentences. 
 
+If you need to perform audio-to-text for more than 10 minutes, it would use Speech Synthesis Markup Language (SSML). This API works in an asynchronous fashion so don't use it for real time synthesis. The service will perform the necessary work on the audio and then save the content to a file that you can download.
+
 To use Synthesize Speech only what we need to add in code is audio configuration parameter.
 
 The service support broaden set of languages and synthesize's voices:
 https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support
 
 ###### Speech translation
-*Migration*
+**Migration!!**
+
 If you have used Bing Speech or the Translator Speech API and want to migrate to Speech service, your old keys won't be work on new service, which necessitate a migration to the new services.
 
 The speech translation capabilities require working with some key objects:
