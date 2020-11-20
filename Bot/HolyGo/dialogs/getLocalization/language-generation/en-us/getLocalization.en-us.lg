@@ -1,0 +1,68 @@
+[import](common.lg)
+
+# TextInput_Prompt_XjDS01()
+- Type the origin city:
+# TextInput_InvalidPrompt_XjDS01()
+- Sorry, '${this.value}' is not valid. The city name must have from 2 to 30 letters!
+# SendActivity_6dUQpi()
+- Type the city again:
+# ConfirmInput_Prompt_tv5Bck()
+- Do you mean ${dialog.localization.city} in ${dialog.localization.country}?
+# ConfirmInput_Prompt_HKb8uN()
+- Do you mean ${dialog. localization.city} in ${dialog.localization.country}?
+# TextInput_Prompt_TwoZzO()
+- Type the destination city:
+# TextInput_InvalidPrompt_TwoZzO()
+- Sorry, '${this.value}' is not valid. The city name must have from 2 to 30 letters!
+# SendActivity_9cHe2F()
+-  External service problem error: ${dialog.api_response.content.message}
+
+
+
+
+
+
+
+
+
+
+# SendActivity_YZQofa()
+-  Don't recognize the origin city - tryagain!
+
+
+
+
+
+
+
+
+
+
+# ConfirmInput_Prompt_jbZRYa()
+- Do you mean ${dialog.destination.city} in ${dialog.destination.country}?
+# SendActivity_ntbWjq()
+- Type the city again:
+# SendActivity_1yMJU7()
+-  External service problem error: ${dialog.api_response.content.message}
+
+
+
+
+
+
+
+# SendActivity_0sMnOq()
+-  Don't recognize the destination city - try again!
+
+
+
+
+
+
+
+
+
+
+
+
+

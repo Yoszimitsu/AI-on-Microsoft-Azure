@@ -1,0 +1,16 @@
+{
+  "holygo2.en-us": {
+    "rootDialog": true,
+    "triggers": {
+      "FlightDetails": [
+        "flightSearch.en-us"
+      ],
+      "cancel": [
+        "Cancel.en-us"
+      ],
+      "help": [
+        "help.en-us"
+      ]
+    }
+  }
+}

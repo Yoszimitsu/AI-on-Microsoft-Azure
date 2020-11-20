@@ -1,0 +1,427 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "PztACi",
+    "name": "getLocalization",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "5lkWaQ"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "XjDS01"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "prompt": "${TextInput_Prompt_XjDS01()}",
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "${TextInput_InvalidPrompt_XjDS01()}",
+          "defaultValueResponse": "",
+          "property": "user.localization.cityInput",
+          "outputFormat": "=trim(this.value)",
+          "validations": [
+            "length(this.value) >=2",
+            "length(this.value) <=30"
+          ]
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "msFTEf"
+          },
+          "method": "GET",
+          "url": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=${user.localization.cityInput}",
+          "headers": {
+            "x-rapidapi-key": "45e7581854mshc2062ee97e68be3p10cdc3jsn66861e30c796",
+            "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+          },
+          "resultProperty": "dialog.api_response"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "qlEYsA"
+          },
+          "condition": "dialog.api_response.statusCode == 200 && dialog.api_response.content.Places != []",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "WnVyKK"
+              },
+              "property": "dialog.localization",
+              "value": "=dialog.api_response.content"
+            },
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "C9RDNx"
+              },
+              "assignments": [
+                {
+                  "property": "dialog.localization.city",
+                  "value": "=dialog.localization[\"Places\"][0].PlaceName"
+                },
+                {
+                  "property": "dialog.localization.country",
+                  "value": "=dialog.localization[\"Places\"][0].CountryName"
+                },
+                {
+                  "property": "dialog.localization.placeId",
+                  "value": "=dialog.localization[\"Places\"][0].PlaceId"
+                },
+                {
+                  "property": "dialog.localization.countryId",
+                  "value": "=dialog.localization[\"Places\"][0].CountryId"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.ConfirmInput",
+              "$designer": {
+                "id": "HKb8uN"
+              },
+              "defaultLocale": "en-us",
+              "disabled": false,
+              "maxTurnCount": 3,
+              "alwaysPrompt": false,
+              "allowInterruptions": false,
+              "prompt": "${ConfirmInput_Prompt_HKb8uN()}",
+              "unrecognizedPrompt": "",
+              "invalidPrompt": "",
+              "defaultValueResponse": "",
+              "choiceOptions": {
+                "includeNumbers": true,
+                "inlineOrMore": ", or ",
+                "inlineOr": " or ",
+                "inlineSeparator": ", "
+              },
+              "property": "dialog.localizationConfirmed",
+              "style": "heroCard"
+            },
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "iBp9Mg"
+              },
+              "condition": "=dialog.localizationConfirmed",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SetProperties",
+                  "$designer": {
+                    "id": "y5J7XX"
+                  },
+                  "assignments": [
+                    {
+                      "property": "user.localization.city",
+                      "value": "=dialog.localization.city"
+                    },
+                    {
+                      "property": "user.localization.country",
+                      "value": "=dialog.localization.country"
+                    },
+                    {
+                      "property": "user.localization.placeId",
+                      "value": "=dialog.localization.placeId"
+                    },
+                    {
+                      "property": "user.localization.countryId",
+                      "value": "=dialog.localization.countryId"
+                    }
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.TextInput",
+                  "$designer": {
+                    "id": "TwoZzO"
+                  },
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "prompt": "${TextInput_Prompt_TwoZzO()}",
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "${TextInput_InvalidPrompt_TwoZzO()}",
+                  "defaultValueResponse": "",
+                  "property": "user.destination.cityInput",
+                  "outputFormat": "=trim(this.value)",
+                  "validations": [
+                    "length(this.value) <=30",
+                    "length(this.value) >=2"
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.HttpRequest",
+                  "$designer": {
+                    "id": "a1Yw2E"
+                  },
+                  "method": "GET",
+                  "url": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=${user.destination.cityInput}",
+                  "headers": {
+                    "x-rapidapi-key": "45e7581854mshc2062ee97e68be3p10cdc3jsn66861e30c796",
+                    "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+                  },
+                  "resultProperty": "dialog.api_response_dest"
+                },
+                {
+                  "$kind": "Microsoft.IfCondition",
+                  "$designer": {
+                    "id": "A0zqLa"
+                  },
+                  "condition": "dialog.api_response_dest.statusCode == 200 && dialog.api_response_dest.content.Places != []",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.SetProperty",
+                      "$designer": {
+                        "id": "7iwVax"
+                      },
+                      "property": "dialog.destination",
+                      "value": "=dialog.api_response_dest.content"
+                    },
+                    {
+                      "$kind": "Microsoft.SetProperties",
+                      "$designer": {
+                        "id": "v56nnS"
+                      },
+                      "assignments": [
+                        {
+                          "property": "dialog.destination.city",
+                          "value": "=dialog.destination[\"Places\"][0].PlaceName"
+                        },
+                        {
+                          "property": "dialog.destination.country",
+                          "value": "=dialog.destination[\"Places\"][0].CountryName"
+                        },
+                        {
+                          "property": "dialog.destination.placeId",
+                          "value": "=dialog.destination[\"Places\"][0].PlaceId"
+                        },
+                        {
+                          "property": "dialog.destination.countryId",
+                          "value": "=dialog.destination[\"Places\"][0].CountryId"
+                        }
+                      ]
+                    },
+                    {
+                      "$kind": "Microsoft.ConfirmInput",
+                      "$designer": {
+                        "id": "jbZRYa"
+                      },
+                      "defaultLocale": "en-us",
+                      "disabled": false,
+                      "maxTurnCount": 3,
+                      "alwaysPrompt": false,
+                      "allowInterruptions": false,
+                      "prompt": "${ConfirmInput_Prompt_jbZRYa()}",
+                      "unrecognizedPrompt": "",
+                      "invalidPrompt": "",
+                      "defaultValueResponse": "",
+                      "choiceOptions": {
+                        "includeNumbers": true,
+                        "inlineOrMore": ", or ",
+                        "inlineOr": " or ",
+                        "inlineSeparator": ", "
+                      },
+                      "property": "dialog.destinationConfirmed",
+                      "style": "heroCard"
+                    },
+                    {
+                      "$kind": "Microsoft.IfCondition",
+                      "$designer": {
+                        "id": "5aVoNa"
+                      },
+                      "condition": "=dialog.destinationConfirmed",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SetProperties",
+                          "$designer": {
+                            "id": "PmJgbw"
+                          },
+                          "assignments": [
+                            {
+                              "property": "user.destination.city",
+                              "value": "=dialog.destination.city"
+                            },
+                            {
+                              "property": "user.destination.country",
+                              "value": "=dialog.destination.country"
+                            },
+                            {
+                              "property": "user.destination.placeId",
+                              "value": "=dialog.destination.placeId"
+                            },
+                            {
+                              "property": "user.destination.countryId",
+                              "value": "=dialog.destination.countryId"
+                            }
+                          ]
+                        }
+                      ],
+                      "elseActions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "ntbWjq"
+                          },
+                          "activity": "${SendActivity_ntbWjq()}"
+                        },
+                        {
+                          "$kind": "Microsoft.DeleteProperties",
+                          "$designer": {
+                            "id": "wXYQoy"
+                          },
+                          "properties": [
+                            "user.destinationConfirmed",
+                            "dialog.destination",
+                            "dialog.api_response_dest"
+                          ]
+                        },
+                        {
+                          "$kind": "Microsoft.RepeatDialog",
+                          "$designer": {
+                            "id": "ut3ALZ"
+                          },
+                          "activityProcessed": true
+                        }
+                      ]
+                    }
+                  ],
+                  "elseActions": [
+                    {
+                      "$kind": "Microsoft.IfCondition",
+                      "$designer": {
+                        "id": "xVv2qP"
+                      },
+                      "condition": "dialog.api_response.content.message != null",
+                      "actions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "1yMJU7"
+                          },
+                          "activity": "${SendActivity_1yMJU7()}"
+                        }
+                      ],
+                      "elseActions": [
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "0sMnOq"
+                          },
+                          "activity": "${SendActivity_0sMnOq()}"
+                        }
+                      ]
+                    },
+                    {
+                      "$kind": "Microsoft.DeleteProperties",
+                      "$designer": {
+                        "id": "zd7fVS"
+                      },
+                      "properties": [
+                        "user.destination.cityInput",
+                        "dialog.api_response"
+                      ]
+                    },
+                    {
+                      "$kind": "Microsoft.RepeatDialog",
+                      "$designer": {
+                        "id": "wrqC45"
+                      },
+                      "activityProcessed": true
+                    }
+                  ]
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "6dUQpi"
+                  },
+                  "activity": "${SendActivity_6dUQpi()}"
+                },
+                {
+                  "$kind": "Microsoft.DeleteProperties",
+                  "$designer": {
+                    "id": "1XUgxL"
+                  },
+                  "properties": [
+                    "dialog.localizationConfirmed",
+                    "dialog.localization",
+                    "dialog.api_response"
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.RepeatDialog",
+                  "$designer": {
+                    "id": "TD3YvM"
+                  },
+                  "activityProcessed": true
+                }
+              ]
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "XWJGnY"
+              },
+              "condition": "dialog.api_response.content.message != null",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "9cHe2F"
+                  },
+                  "activity": "${SendActivity_9cHe2F()}"
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "YZQofa"
+                  },
+                  "activity": "${SendActivity_YZQofa()}"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.DeleteProperties",
+              "$designer": {
+                "id": "6Jm7gh"
+              },
+              "properties": [
+                "user.localization.cityInput",
+                "dialog.api_response"
+              ]
+            },
+            {
+              "$kind": "Microsoft.RepeatDialog",
+              "$designer": {
+                "id": "xDbZzW"
+              },
+              "activityProcessed": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "getLocalization.lg",
+  "recognizer": "getLocalization.lu.qna",
+  "id": "getLocalization"
+}

@@ -1,0 +1,22 @@
+[import](common.lg)
+
+# SendActivity_ndfkKa()
+- ${user.destination.city}, ${user.destination.country}, ${user.destination.placeId}, ${user.destination.countryId}
+# SendActivity_Q85Nrj()
+- Let's try to find a flight from ${user.localization.cityInput} to ${user.destination.cityInput} in ${user.date}!
+# SendActivity_nvUJEb()
+- HolyGo wish you a nice travel!
+# SendActivity_HtBBia()
+-  External service problem error: ${dialog.api_response.content.message}
+
+# SendActivity_jWsrJm()
+-  Don't found the flight in that date.
+
+# ConfirmInput_Prompt_ZoOy6D()
+- Do you want check other date?
+# SendActivity_5ROaxT()
+- HolyGo wish you have a nice day!
+# SendActivity_GdSi3I()
+-${AdaptiveCard()}
+# SendActivity_m7SGUN()
+- I'm looking for you a flight from ${user.localization.city} to ${user.destination.city} in date: ${user.date}

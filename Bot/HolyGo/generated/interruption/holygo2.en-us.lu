@@ -1,0 +1,78 @@
+
+> LUIS application information
+> !# @app.versionId = 0.1
+> !# @app.culture = en-us
+> !# @app.luis_schema_version = 3.2.0
+
+
+> # Intent definitions
+
+# FlightDetails
+- I need a flight from {@fromCity=London} to {@toCity=Madrid} on {@date=2020-01-31}
+- I am looking for ticket from {@fromCity=Lisbon} to {@toCity=Warsaw}
+- Find a flight from {@fromCity=Warsaw} to {@toCity=Mediolan} on {@date=2020-02-25}
+- I need connection from {@fromCity=New York} to {@toCity=Pekin}
+- from {@fromCity=New York} to {@toCity=Pekin}
+- I need to go from {@fromCity=Roma} to {@toCity=Boston}
+- {@date=2020-02-25} I have to go from {@fromCity=Roma} to {@toCity=Boston}
+- I am planning trip from {@fromCity=Chicago} to {@toCity=Boston} in {@date=2020-02-25}
+- I want to go from {@fromCity=New York} to {@toCity=Los Angeles} in {@date=2020-02-25}
+- How can I go from {@fromCity=New York} to {@toCity=Los Angeles} {@date=2020-02-25}
+- Do you find for me flight from {@fromCity=New York} to {@toCity=Los Angeles} {@date=2020-02-25}
+- I want to go to
+- I want to travel to
+- I want to trip to
+- I need a flight
+- I need a ticket
+- I need to buy a ticket to
+- I need to go
+- I have to go to
+- I must to go
+- I must to buy
+- I'm looking for connection
+- How can I go to
+- travel
+- airline
+- flight
+- trip
+
+
+# cancel
+- cancel
+- reset
+- finish
+- end
+- go back
+
+
+# help
+- help
+- help me
+- help please
+- I need help
+- mistake
+- I don't know what can I do
+- what is HolyGo
+- HolyGo[?]
+
+
+> # Entity definitions
+
+@ ml toCity
+
+@ ml fromCity
+
+@ ml date
+
+
+> # PREBUILT Entity definitions
+
+
+> # Phrase list definitions
+
+
+> # List entities
+
+> # RegEx entities
+
+

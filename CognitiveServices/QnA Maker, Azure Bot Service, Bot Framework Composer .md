@@ -107,7 +107,7 @@ The Application settings portion allows you to configure Composer-specific behav
 
 In Design tab, we can create bot architecture model in graph or code.
 
-![dialog](resources/bot_dialogs.png)
+![dialog](resources/images/bot_dialogs.png)
 
 A bot architecture is build on a few objects:
 - LU Recognizer - the recognizer component is responsible for interpreting what the user wants, based on the input. There are three options for a recognizer, None, LUIS, and Regular Expression. The LUIS recognizer utilizes the language understanding service to understand the user's intent through analysis of the utterance entered by the user. LUIS is the default recognizer if no other is selected. The regular expression type will use industry standard regex formulations to determine the user's intent.

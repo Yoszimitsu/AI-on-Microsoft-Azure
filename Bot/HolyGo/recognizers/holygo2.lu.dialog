@@ -1,0 +1,8 @@
+{
+  "$kind": "Microsoft.MultiLanguageRecognizer",
+  "id": "LUIS_holygo2",
+  "recognizers": {
+    "en-us": "holygo2.en-us.lu",
+    "": "holygo2.en-us.lu"
+  }
+}

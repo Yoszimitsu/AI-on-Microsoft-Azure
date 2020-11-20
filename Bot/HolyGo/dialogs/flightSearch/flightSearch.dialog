@@ -1,0 +1,246 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "cGl7zU",
+    "name": "flightSearch",
+    "description": ""
+  },
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "OT3joh"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.BeginDialog",
+          "$designer": {
+            "id": "bta39b"
+          },
+          "activityProcessed": true,
+          "dialog": "getLocalization"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "wOhAwb"
+          },
+          "condition": "user.date != null",
+          "elseActions": [
+            {
+              "$kind": "Microsoft.BeginDialog",
+              "$designer": {
+                "id": "72hMJa"
+              },
+              "activityProcessed": true,
+              "dialog": "getDate"
+            }
+          ],
+          "actions": []
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "m7SGUN"
+          },
+          "activity": "${SendActivity_m7SGUN()}"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "uUNpVQ"
+          },
+          "method": "GET",
+          "url": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-US/${user.localization.placeId}/${user.destination.placeId}/${user.date}",
+          "headers": {
+            "x-rapidapi-key": "45e7581854mshc2062ee97e68be3p10cdc3jsn66861e30c796",
+            "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+            "useQueryString": "true"
+          },
+          "resultProperty": "dialog.api_response"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "PRchIt"
+          },
+          "condition": "dialog.api_response.statusCode == 200 && dialog.api_response.content.Quotes != []",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperty",
+              "$designer": {
+                "id": "UsKJyb"
+              },
+              "property": "dialog.flights",
+              "value": "=dialog.api_response.content"
+            },
+            {
+              "$kind": "Microsoft.Foreach",
+              "$designer": {
+                "id": "dusQ9X"
+              },
+              "index": "dialog.foreach.index",
+              "value": "dialog.foreach.value",
+              "itemsProperty": "dialog.flights[\"Quotes\"]",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SetProperties",
+                  "$designer": {
+                    "id": "gw060n"
+                  },
+                  "assignments": [
+                    {
+                      "property": "dialog.flight.minPrice ",
+                      "value": "= dialog.flights[\"Quotes\"][dialog.foreach.index].MinPrice"
+                    },
+                    {
+                      "property": "dialog.flight.departureDate",
+                      "value": "= dialog.flights[\"Quotes\"][dialog.foreach.index][\"OutboundLeg\"].DepartureDate"
+                    },
+                    {
+                      "property": "dialog.flight.carrierName",
+                      "value": "= dialog.flights[\"Carriers\"][dialog.foreach.index].name"
+                    },
+                    {
+                      "property": "dialog.flight.destinationAirportName",
+                      "value": "= dialog.flights[\"Places\"][dialog.foreach.index].name"
+                    },
+                    {
+                      "property": "dialog.flight.localizationAirportName",
+                      "value": "= dialog.flights[\"Places\"][dialog.foreach.index].name"
+                    },
+                    {
+                      "property": "dialog.flight.destinationIataCode",
+                      "value": "= dialog.flights[\"Places\"][dialog.foreach.index + 1].IataCode"
+                    },
+                    {
+                      "property": "dialog.flight.localizationIataCode",
+                      "value": "= dialog.flights[\"Places\"][dialog.foreach.index].IataCode"
+                    },
+                    {
+                      "property": "dialog.flight.flightCode",
+                      "value": "= dialog.flights[\"Carriers\"][dialog.foreach.index].CarrierId"
+                    }
+                  ]
+                },
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "GdSi3I"
+                  },
+                  "activity": "${SendActivity_GdSi3I()}"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "nvUJEb"
+              },
+              "activity": "${SendActivity_nvUJEb()}"
+            },
+            {
+              "$kind": "Microsoft.DeleteProperties",
+              "$designer": {
+                "id": "0ov1kn"
+              },
+              "properties": [
+                "user.destination",
+                "user.localization",
+                "user.date"
+              ]
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.IfCondition",
+              "$designer": {
+                "id": "jUupp9"
+              },
+              "condition": "dialog.api_response.content.message != null",
+              "actions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "HtBBia"
+                  },
+                  "activity": "${SendActivity_HtBBia()}"
+                }
+              ],
+              "elseActions": [
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "jWsrJm"
+                  },
+                  "activity": "${SendActivity_jWsrJm()}"
+                },
+                {
+                  "$kind": "Microsoft.ConfirmInput",
+                  "$designer": {
+                    "id": "ZoOy6D"
+                  },
+                  "defaultLocale": "en-us",
+                  "disabled": false,
+                  "maxTurnCount": 3,
+                  "alwaysPrompt": false,
+                  "allowInterruptions": false,
+                  "prompt": "${ConfirmInput_Prompt_ZoOy6D()}",
+                  "unrecognizedPrompt": "",
+                  "invalidPrompt": "",
+                  "defaultValueResponse": "",
+                  "choiceOptions": {
+                    "includeNumbers": true,
+                    "inlineOrMore": ", or "
+                  },
+                  "property": "dialog.dateConfirmed"
+                },
+                {
+                  "$kind": "Microsoft.IfCondition",
+                  "$designer": {
+                    "id": "aHDK1L"
+                  },
+                  "condition": "=dialog.dateConfirmed",
+                  "actions": [
+                    {
+                      "$kind": "Microsoft.DeleteProperties",
+                      "$designer": {
+                        "id": "Oh8lTR"
+                      },
+                      "properties": [
+                        "user.date"
+                      ]
+                    },
+                    {
+                      "$kind": "Microsoft.RepeatDialog",
+                      "$designer": {
+                        "id": "BtaShg"
+                      },
+                      "activityProcessed": true
+                    }
+                  ],
+                  "elseActions": [
+                    {
+                      "$kind": "Microsoft.SendActivity",
+                      "$designer": {
+                        "id": "5ROaxT"
+                      },
+                      "activity": "${SendActivity_5ROaxT()}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "flightSearch.lg",
+  "recognizer": "flightSearch.lu.qna",
+  "id": "flightSearch",
+  "autoEndDialog": true
+}

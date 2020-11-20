@@ -1,0 +1,205 @@
+# WelcomeUser()
+- Hi, I'm HolyGo. I find a flight for you!
+- Hello, I'm HolyGo. Let me find a flight for you!
+- Do you search a flight? Tell me what you need. I am HolyGo and help you in pleasure!
+
+# AdaptiveCard
+[Activity
+    Attachments = ${json(ticketCard())}
+]
+
+# ticketCard
+- ```
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "spacing": "None",
+                            "style": "emphasis",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "size": "ExtraLarge",
+                                    "weight": "Lighter",
+                                    "color": "Accent",
+                                    "text": "${dialog.flight.localizationAirportName}",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "Small",
+                                    "text": "${dialog.flight.carrierName}  Air Lines flight ${dialog.flight.flightCode} ",
+                                    "wrap": true
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "spacing": "Small",
+                                    "text": "Price start from: $${dialog.flight.minPrice}",
+                                    "wrap": true,
+                                    "maxLines": -2,
+                                    "fontType": "Default",
+                                    "weight": "Bolder",
+                                    "isSubtle": true,
+                                    "color": "Default"
+                                }
+                            ],
+                            "bleed": true,
+                            "height": "stretch"
+                        }
+                    ],
+                    "width": "auto",
+                    "height": "stretch"
+                },
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "Container",
+                            "height": "stretch",
+                            "items": [
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "size": "ExtraLarge",
+                                                    "weight": "Lighter",
+                                                    "text": "${dialog.flight.localizationIataCode}",
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "width": "auto"
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "verticalContentAlignment": "Center",
+                                            "items": [
+                                                {
+                                                    "type": "Image",
+                                                    "url": "https://messagecardplayground.azurewebsites.net/assets/graydot2x2.png",
+                                                    "width": "10000px",
+                                                    "height": "2px"
+                                                }
+                                            ],
+                                            "width": "stretch"
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "spacing": "Small",
+                                            "verticalContentAlignment": "Center",
+                                            "items": [
+                                                {
+                                                    "type": "Image",
+                                                    "url": "https://messagecardplayground.azurewebsites.net/assets/smallairplane.png",
+                                                    "height": "16px"
+                                                }
+                                            ],
+                                            "width": "auto"
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "TextBlock",
+                                                    "horizontalAlignment": "Right",
+                                                    "size": "ExtraLarge",
+                                                    "weight": "Lighter",
+                                                    "text": "${dialog.flight.destinationIataCode}",
+                                                    "wrap": true
+                                                }
+                                            ],
+                                            "width": "auto"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "ColumnSet",
+                                    "columns": [
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "RichTextBlock",
+                                                    "inlines": [
+                                                        {
+                                                            "type": "TextRun",
+                                                            "text": "${string(user.date)}\\n",
+                                                            "isSubtle": true,
+                                                            "wrap": true
+                                                        },
+                                                        {
+                                                            "type": "TextRun",
+                                                            "text": "${user.localization.city}",
+                                                            "isSubtle": true,
+                                                            "wrap": true
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "width": 1
+                                        },
+                                        {
+                                            "type": "Column",
+                                            "items": [
+                                                {
+                                                    "type": "RichTextBlock",
+                                                    "horizontalAlignment": "Right",
+                                                    "inlines": [
+                                                        {
+                                                            "type": "TextRun",
+                                                            "text": "${string(user.date)}\\n",
+                                                            "isSubtle": true,
+                                                            "wrap": true
+                                                        },
+                                                        {
+                                                            "type": "TextRun",
+                                                            "text": "${user.destination.city}",
+                                                            "isSubtle": true,
+                                                            "wrap": true
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "width": 1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "ActionSet",
+                                    "separator": true,
+                                    "actions": [
+                                        {
+                                            "type": "Action.OpenUrl",
+                                            "title": "Go to website",
+                                            "style": "positive",
+                                            "url": "https://www.skyscanner.pl/?locale=pl-PL&previousCultureSource=COOKIE&redirectedFrom=www.skyscanner.com"
+                                        }
+                                    ],
+                                    "spacing": "Medium",
+                                    "horizontalAlignment": "Center",
+                                    "height": "stretch",
+                                    "isVisible": true
+                                }
+                            ]
+                        }
+                    ],
+                    "width": 50
+                }
+            ],
+            "height": "stretch"
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}
+```

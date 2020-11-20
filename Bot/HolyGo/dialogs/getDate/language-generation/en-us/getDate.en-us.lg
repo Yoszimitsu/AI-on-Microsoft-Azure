@@ -1,0 +1,4 @@
+[import](common.lg)
+
+# TextInput_Prompt_RuCsR2()
+- When do you want to go? Keep format "YYYY-MM-DD" or "YYYY-MM".
