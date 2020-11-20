@@ -312,6 +312,13 @@
                             "id": "1yMJU7"
                           },
                           "activity": "${SendActivity_1yMJU7()}"
+                        },
+                        {
+                          "$kind": "Microsoft.SendActivity",
+                          "$designer": {
+                            "id": "DlPWDo"
+                          },
+                          "activity": "${SendActivity_DlPWDo()}"
                         }
                       ],
                       "elseActions": [
@@ -387,6 +394,13 @@
                     "id": "9cHe2F"
                   },
                   "activity": "${SendActivity_9cHe2F()}"
+                },
+                {
+                  "$kind": "Microsoft.SendActivity",
+                  "$designer": {
+                    "id": "QlmgKZ"
+                  },
+                  "activity": "${SendActivity_QlmgKZ()}"
                 }
               ],
               "elseActions": [
