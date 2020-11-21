@@ -1,6 +1,7 @@
 # HolyGo Bot 
 
 ### YouTube video
+https://youtu.be/mVzRRviM7Wk
 
 ### UseCase
 The HolyGo was created as a browser to search flight ticket. The service is based on SkyScanner REST API and provides searching the flight ticket between cities
