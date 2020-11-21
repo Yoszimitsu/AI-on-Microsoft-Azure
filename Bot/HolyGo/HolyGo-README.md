@@ -46,19 +46,19 @@ New dialogs are responsible for specific job in service:
 - help
 - cancel 
 
-Next step is implementation business logic new dialogs.
+Next step is implementation the dialogs. 
 
 **LUIS**
 
-Below picture presents creating intents and entity from LUIS service for SearchFlight. HolyGo bot has entities of type machine learning what means that LUIS service uses AI to learn from defined utterance to suit user phases to proper Intents.
+Below picture presents creating intents and entity from LUIS service for SearchFlight. HolyGo bot has entities of type machine learning what means that LUIS service uses AI to learn from defined utterance to match user phases to proper Intents.
 
 ![](../resources/HolyGo_FlightSearch.png)
 
-In LUIS service is defined 3 entities:
+3 entities defined in LUIS service:
 
 ![](../resources/HolyGo_Entities.png)
 
-**FlightDetalis.Score >= 0.7** condition means that trigger is actd only if top-scoring intent is on user-defined level.
+**FlightDetalis.Score >= 0.7** condition means that trigger is pulled only if top-scoring intent gains user-defined level.
 
 **Dialog flightSearch**
 
@@ -68,14 +68,15 @@ In LUIS service is defined 3 entities:
 
 **HolyGo responses**
 
-In tab Bot Responses we can find all defined respones for specific dialogs. 
+The Bot Responses tab presents all defined respones for specific dialogs. 
 
 ![](../resources/HolyGo_Responses1.png)  
 
 ![](../resources/HolyGo_ResponsesFlightSearch.png)
 
 **Error handling**
-Below we can see validation and error handling for user input. An user after typing an origin and destination place has to confirmed that the service recognized cities properly. 
+
+Below we can see a validation and error handling for user input. An user after typing origin and destination place has to confirmed that the service recognized cities properly. 
 
 ![](../resources/HolyGo_GetLocalization_ErrorHandling.png)
 
