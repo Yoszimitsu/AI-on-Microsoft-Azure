@@ -367,7 +367,8 @@
                   "properties": [
                     "dialog.localizationConfirmed",
                     "dialog.localization",
-                    "dialog.api_response"
+                    "dialog.api_response",
+                    "user.localization.cityInput"
                   ]
                 },
                 {
