@@ -31,11 +31,11 @@ https://rapidapi.com/skyscanner/api/skyscanner-flight-search?endpoint=5a9c9edde4
 #### Creation process
 The first step is creation new bot in Framework Bot Composer. 
 
-![BFC_newBot](../resources/BFC_newBot.png)
+![](../resources/BFC_newBot.png)
 
 The HolyGo is a main dialog created by default. It contains "Greeting" trigger which is responsible for initialization every new user.
 
-![BFC_newBot](../resources/HolyGo_Greeting.png) ![BFC_newBot](../resources/HolyGo_Dialogs.png)
+![](../resources/HolyGo_Greeting.png) ![](../resources/HolyGo_Dialogs.png)
 
 New dialogs are responsible for specific job in service:
 - getDate
@@ -48,43 +48,43 @@ Next step is implementation business logic new dialogs.
 
 **getDate**
 
-![BFC_newBot](../resources/HolyGo_getDate.png) 
+![](../resources/HolyGo_getDate.png) 
 
 **flightSearch**
 
 Below picture presents creating intents and entity from LUIS service for SearchFlight. HolyGo bot has entities of type machine learning what means that LUIS service uses AI to learn from defined utterance to suit user phases to proper Intents.
 
-![BFC_newBot](../resources/HolyGo_FlightSearch.png)
+![](../resources/HolyGo_FlightSearch.png)
 
 In LUIS service is defined 3 entities:
 
-![BFC_newBot](../resources/HolyGo_Entities.png)
+![](../resources/HolyGo_Entities.png)
 
 **FlightDetalis.Score >= 0.7** condition means that trigger is actd only if top-scoring intent is on user-defined level.
 
 
-![BFC_newBot](../resources/HolyGo_FlightSearch1.png)
+![](../resources/HolyGo_FlightSearch1.png)
 
-![BFC_newBot](../resources/HolyGo_FlightSearch3.png)
+![](../resources/HolyGo_FlightSearch3.png)
 
 In tab Bot Responses we can find all defined respones for specific dialogs. 
 
-![BFC_newBot](../resources/HolyGo_Responses1.png)  
+![](../resources/HolyGo_Responses1.png)  
 
-![BFC_newBot](../resources/HolyGo_ResponsesFlightSearch.png)
+![](../resources/HolyGo_ResponsesFlightSearch.png)
 
 Below we can see validation and error handling for user input. An user after typing an origin and destination place has to confirmed that the service recognized cities properly. 
 
-![BFC_newBot](../resources/HolyGo_GetLocalization_ErrorHandling.png)
+![](../resources/HolyGo_GetLocalization_ErrorHandling.png)
 
-![BFC_newBot](../resources/HolyGo_originConfirmation.png)
+![](../resources/HolyGo_originConfirmation.png)
 
 The Adaptive Card is used to present the SkyScanner responses. To build cards I used web creator (https://adaptivecards.io/designer/) which is a powerful tool for creating personalize adaptive features.
 A code is generated in JSON format and only what is need to do is adding specific variables. 
 
-![BFC_newBot](../resources/HolyGo_adaptiveCards2.png)
+![](../resources/HolyGo_AdaptiveCards2.png)
 
-![BFC_newBot](../resources/HolyGo_adaptiveCards1.png)
+![](../resources/HolyGo_AdaptiveCards1.png)
 
 
 ### Resources
