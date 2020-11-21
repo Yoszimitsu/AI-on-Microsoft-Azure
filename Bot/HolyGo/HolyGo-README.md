@@ -1,8 +1,8 @@
 # HolyGo Bot 
 
-#### YouTube video
+### YouTube video
 
-#### UseCase
+### UseCase
 The HolyGo was created as a browser to search flight ticket. The service is based on SkyScanner REST API and provides searching the flight ticket between cities
 including a date. 
 
@@ -11,13 +11,13 @@ flight between cities, dates and prices. Unfortunately, some information shared 
 but time is always 00.00. 
 https://rapidapi.com/skyscanner/api/skyscanner-flight-search?endpoint=5a9c9edde4b084deb4ea6195
 
-#### Used services
+### Used services
 - Bot Framework Composer
 - Bot Framework Emulator
 - LUIS
 - Adaptive Cards
 
-#### Step-by-step
+### Step-by-step
 1. Install Bot Framework Composer and Bot Framework Emulator
 2. Create new bot from scrach. 
 3. Build welcome dialog and add action triggers
@@ -28,14 +28,16 @@ https://rapidapi.com/skyscanner/api/skyscanner-flight-search?endpoint=5a9c9edde4
 7. Create Adaptive Cards for HTTP responses
 8. Create validation, error handling, exceptions
 
-#### Creation process
+### Creation process
 The first step is creation new bot in Framework Bot Composer. 
 
 ![](../resources/BFC_newBot.png)
 
 The HolyGo is a main dialog created by default. It contains "Greeting" trigger which is responsible for initialization every new user.
 
-![](../resources/HolyGo_Greeting.png) ![](../resources/HolyGo_Dialogs.png)
+![](../resources/HolyGo_Greeting.png)
+
+![](../resources/HolyGo_Dialogs.png)
 
 New dialogs are responsible for specific job in service:
 - getDate
@@ -46,11 +48,7 @@ New dialogs are responsible for specific job in service:
 
 Next step is implementation business logic new dialogs.
 
-**getDate**
-
-![](../resources/HolyGo_getDate.png) 
-
-**flightSearch**
+**LUIS**
 
 Below picture presents creating intents and entity from LUIS service for SearchFlight. HolyGo bot has entities of type machine learning what means that LUIS service uses AI to learn from defined utterance to suit user phases to proper Intents.
 
@@ -62,10 +60,13 @@ In LUIS service is defined 3 entities:
 
 **FlightDetalis.Score >= 0.7** condition means that trigger is actd only if top-scoring intent is on user-defined level.
 
+**Dialog flightSearch**
 
 ![](../resources/HolyGo_FlightSearch1.png)
 
 ![](../resources/HolyGo_FlightSearch3.png)
+
+**HolyGo responses**
 
 In tab Bot Responses we can find all defined respones for specific dialogs. 
 
@@ -73,11 +74,14 @@ In tab Bot Responses we can find all defined respones for specific dialogs.
 
 ![](../resources/HolyGo_ResponsesFlightSearch.png)
 
+**Error handling**
 Below we can see validation and error handling for user input. An user after typing an origin and destination place has to confirmed that the service recognized cities properly. 
 
 ![](../resources/HolyGo_GetLocalization_ErrorHandling.png)
 
 ![](../resources/HolyGo_originConfirmation.png)
+
+**Adaptive Cards**
 
 The Adaptive Card is used to present the SkyScanner responses. To build cards I used web creator (https://adaptivecards.io/designer/) which is a powerful tool for creating personalize adaptive features.
 A code is generated in JSON format and only what is need to do is adding specific variables. 
@@ -88,7 +92,6 @@ A code is generated in JSON format and only what is need to do is adding specifi
 
 
 ### Resources
-
 - https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-concept-patterns
 - https://docs.microsoft.com/en-us/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0#roles
 - https://adaptivecards.io/designer/
