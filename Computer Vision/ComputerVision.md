@@ -1,7 +1,9 @@
 # Computer Vision
-https://docs.microsoft.com/en-us/learn/modules/identify-faces-with-computer-vision/8-test-face-detection?pivots=python
 
 #### Intro
+
+Tutorial: https://docs.microsoft.com/en-us/learn/modules/identify-faces-with-computer-vision/1-introduction
+
 The Computer Vision API provides algorithms to process images and return insights.
 Computer Vision service provides face recognition, matching and define face attributes. The Face API can also organize people and facial definitions into groups to locate similar faces.
 
@@ -47,10 +49,10 @@ Facial recognition is used in many areas, including security, natural user inter
 
 Facial recognition builds on the facial detection API by analyzing the landmarks in two or more pictures to determine if the same face is present. There are four aspects which can be determined through this analysis.
 
-- 1.Do two images of a face belong to the same person? This defines verification.
-- 2.Does this person look like other people? This defines similarity.
-- 3.Do all of these faces belong together? This defines grouping.
-- 4.Who is this person in this group of people? This defines identification.
+1. Do two images of a face belong to the same person? This defines verification.
+2. Does this person look like other people? This defines similarity.
+3. Do all of these faces belong together? This defines grouping.
+4. Who is this person in this group of people? This defines identification.
 
 Strictly speaking, a face list is a group of faces. Create and manage face lists to find similar faces in a fixed collection of faces. For example, you could use a face list to find a similar face in a set of pictures of celebrities, friends, or family members.
 
@@ -98,7 +100,7 @@ https://azure.microsoft.com/en-us/pricing/details/cognitive-services/face-api/
 
 #Computer Vision
 
-https://docs.microsoft.com/en-us/learn/modules/create-computer-vision-service-to-classify-images/5-extract-printed-text
+Tutorial: https://docs.microsoft.com/en-us/learn/modules/create-computer-vision-service-to-classify-images/5-extract-printed-text
 
 ### Intro 
 
@@ -122,8 +124,6 @@ The call accepts two optional parameters:
 ##### Handwritten text
 
 The service allow to detect handwritten text. The recognizeText operation detects and extracts handwritten text from notes, letters, essays, whiteboards, forms, and other sources
-
-### Use Cases
 
 
 ### How to
@@ -171,3 +171,37 @@ The time it takes to get a result from this call depends on the amount of writin
 _**Pricing**_
 
 https://azure.microsoft.com/en-us/pricing/details/cognitive-services/computer-vision/
+
+# Custom Vision portal 
+
+Tutorial: https://docs.microsoft.com/en-us/learn/modules/classify-images-with-custom-vision-service/
+
+### How to 
+
+Custom Vision UI portal: https://www.customvision.ai
+
+Steps:
+1. Create new project on CustomVision portal.
+2. Set proper Classification Types and Domain.
+
+![](resources/ComputerVisionProject.png)
+
+3. Create tags.
+
+![](resources/tags.png)
+
+4. Upload images and set proper tags to them.
+5. Train model.
+6. Test the model using "Quick Test".
+7. In prediction tab, we can set tags to images we have tested to refine the model without uploading additional training images.
+8. Publish model (Performance tab -> Publish -> Prediction URL).
+9. Use HTTP request to get image's prediction.
+
+![](resources/azureShell3.png)
+
+
+_**Pricing**_
+
+2 types of subscriptions (Free and Standard):
+
+https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-vision-service/
