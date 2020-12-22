@@ -1,4 +1,4 @@
-# Computer Vision
+# Vision Services
 
 #### Intro
 
@@ -97,7 +97,6 @@ We can choose 2 types of subscriptions:
 
 https://azure.microsoft.com/en-us/pricing/details/cognitive-services/face-api/
 
-
 #Computer Vision
 
 Tutorial: https://docs.microsoft.com/en-us/learn/modules/create-computer-vision-service-to-classify-images/5-extract-printed-text
@@ -120,11 +119,9 @@ The call accepts two optional parameters:
 - language: The language code of the text to be detected in the image. The default value is unk,or unknown. This let's the service auto detect the language of the text in the image.
 - detectOrientation: When true, the service tries to detect the image orientation and correct it before further processing, for example, whether the image is upside-down.
 
-
 ##### Handwritten text
 
 The service allow to detect handwritten text. The recognizeText operation detects and extracts handwritten text from notes, letters, essays, whiteboards, forms, and other sources
-
 
 ### How to
 
@@ -199,9 +196,45 @@ Steps:
 
 ![](resources/azureShell3.png)
 
-
 _**Pricing**_
 
 2 types of subscriptions (Free and Standard):
 
 https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-vision-service/
+
+# Video Indexer
+
+https://docs.microsoft.com/en-us/learn/modules/extract-insights-from-videos-with-video-indexer-service/1-introduction
+
+Azure Video Indexer is a service to extract insights from media. It uses machine learning models that can be further customized and trained. The video insights include face identification, text recognition, object labels, scene segmentations, and more. Additional insights are extracted from audio, such as transcription and emotion detection. You can use these results to improve search, extract clips, create thumbnails, and more.
+
+### How to
+
+_**Constrains**_
+- You also want to be aware of upload limits. If you are using a trial account, you may upload five videos per minute. For a paid account, the limit is 50 per minute.
+
+Api:
+https://api-portal.videoindexer.ai/docs/services/Operations/operations/Cancel-Project-Render-Operation
+
+Video Indexer Developer Portal:
+https://api-portal.videoindexer.ai
+
+Extracting insights from videos starts with uploading and indexing the videos. Azure Video Indexer provides several options for uploading videos: upload from URL, send file as byte array, or reference existing asset ID. Many file formats are supported including WMV, MOV, MPG, and AVI. Once the video is uploaded, the indexing process starts automatically. Once completed, you can examine the indexer results.
+
+_**Key aspects**_
+
+Video indexer identifies temporal segments within the video to improve how you browse and edit indexed videos. The key aspects are extracted based on changes in color, contrast, and other semantic properties.
+The detected segments are organized as a hierarchy. Video Indexer processes the video file into one or more scenes. Each scene is made up of one or more shots. Within the shot, keyframes are determined.
+
+**Scene**
+A scene represents a single event within the video. It groups consecutive shots that are related. It will have a start time, end time, and thumbnail (first keyframe in the scene).
+
+**Shot**
+A shot represents a continuous segment of the video. Transitions within the video are detected which determine how it is split into shots. Shots have a start time, end time, and list of keyframes.
+
+**Keyframe**
+Keyframes are frames that represent the shot. Each one is for a specific point in time. There can be gaps in time between keyframes but together they are representative of the shot. Each keyframe can be downloaded as a high-resolution image.
+
+_**Pricing**_
+
+https://azure.microsoft.com/en-us/pricing/details/media-services/
